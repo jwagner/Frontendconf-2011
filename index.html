@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="art_neon.css" />
+<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+  <h1><a href="http://29a.ch/2011/9/10/talk-on-html5-canvas-particles">29a.ch
+      <small>blog</small></a></h1>
+<div id="social">
+  <a href="http://twitter.com/share" class="twitter-share-button"
+    data-url="http://29a.ch/sandbox/2011/fc11/"
+    data-text="Demo of the frontendconf 2011 talk by @29a_ch"
+    data-count="horizontal" data-via="29a_ch">Tweet</a>
+  <iframe
+    src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F29a.ch%2Fsandbox%2F2011%2Ffc11%2F&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21"
+    scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px;height:20px;" allowTransparency="true"></iframe>
+ <div class="g-plusone" data-size="medium"
+   data-href="http://29a.ch/sandbox/2011/fc11/" data-count="true"></div>
+</div> 
+<ul id="colors">
+  <li style="background-color: rgb(160, 10, 10)" class="active"
+    onclick="color='rgb(5, 1, 1)';composite='lighter';lineWidth=1.0;"></li>
+  <li style="background-color: rgb(40, 200, 20)"
+    onclick="color='rgb(2, 6, 1)';composite='lighter';lineWidth=1.0;"></li>
+  <li style="background-color: rgb(10, 10, 80)"
+    onclick="color='rgb(1, 2, 8)';composite='lighter';lineWidth=1.0;"></li>
+  <li style="background-color: rgb(200, 150, 50)"
+    onclick="color='rgb(4, 3, 1)';composite='lighter';lineWidth=1.0;"></li>
+  <li style="background-color: rgb(75, 25, 100)"
+    onclick="color='rgb(3, 1, 4)';composite='lighter';lineWidth=1.0;"></li>
+  <li style="background-color: rgb(25, 100, 75)"
+    onclick="color='rgb(1, 4, 3)';composite='lighter';lineWidth=1.0;"></li>
+  <li style="background-color: #000"
+    onclick="color='rgba(0, 0, 0, 0.6);';composite='source-over';lineWidth=0.1;;"></li>
+  <li style="background-color: rgb(255, 255, 255)"
+    onclick="color='rgb(3, 3, 3)';composite='lighter';lineWidth=1.0;"></li>
+</ul>
+<a href="#" id="clear" class="button" onclick="window.clear();">Clear</a>
+<a href="#" id="share" class="button" onclick="window.share();">Share Image</a>
+<a href="#" id="download" class="button" onclick="window.download();">Download</a>
+
+<canvas id=c width=800 height=600></canvas>
+<script src="jquery.js"></script>
+<script src="input.js"></script>
+<script src="loader.js"></script>
+<script src="clock.js"></script>
+<script src="common.js"></script>
+<script src="p0.js"></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js" async defer></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js" async defer></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5205069-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+

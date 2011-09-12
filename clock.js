@@ -1,5 +1,6 @@
 (function () {
 window.clock = {};
+window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
 clock.Clock = function () {
     this.running = false;
     this.interval = null;

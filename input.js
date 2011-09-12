@@ -93,8 +93,7 @@ inputhandler.InputHandler.prototype = {
         document.onselectstart = function(){return false;}
     },
     blur: function() {
-        this.hasFocus = false;
-        this.reset();
+        //this.reset();
     },
     focus: function() {
         if(!this.hasFocus) {

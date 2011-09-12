@@ -1,7 +1,8 @@
 // 29a.ch/@
 // 29a.ch/+
 
-var particles = [];
+var particles = [],
+    color = 'rgb(8, 2, 2)';
 
 input.onClick = function (x, y) {
     for (var i = 0; i < 10; i++) {
@@ -23,6 +24,7 @@ function start() {
 }
 
 timer.ontick = function(td) {
+    var new_particles = [];
     ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = 'white';
     for(var i = 0; i < particles.length; i++) {
@@ -43,7 +45,69 @@ timer.ontick = function(td) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, radius, 0, Math.PI*2, true);
         ctx.closePath();
-        ctx.strokeStyle = 'rgb(8, 2, 2)';
+        ctx.strokeStyle = color;
         ctx.stroke();
+        if(p.age < 1000){
+            new_particles.push(p);
+        }
     }
+    particles = new_particles;
 }
+
+function download(){
+    _gaq.push(['_trackEvent', 'fc11', 'download']);
+
+    try {
+        var img = canvas.toDataURL('image/jpeg', 0.9);
+    } catch(e) {
+        var img = canvas.toDataURL();
+    }
+
+    window.open(img);
+}
+
+
+function share(){
+    _gaq.push(['_trackEvent', 'fc11', 'share']);
+
+
+    try {
+        var img = canvas.toDataURL('image/jpeg', 0.9).split(',')[1];
+    } catch(e) {
+        var img = canvas.toDataURL().split(',')[1];
+    }
+    var w = window.open();
+    w.document.write('Uploading...');
+    $.ajax({
+        url: 'http://api.imgur.com/2/upload.json',
+        type: 'POST',
+        data: {
+            type: 'base64',
+            key: '48c16073663cb7d3befd1c2c064dfa0d',
+            name: 'neon.jpg',
+            title: 'test title',
+            caption: 'test caption',
+            image: img
+        },
+        dataType: 'json'
+    }).success(function(data) {
+        w.location.href = data['upload']['links']['imgur_page'];
+    }).error(function() {
+        alert('Could not reach api.imgur.com. Sorry :(');
+        w.close();
+    });
+}
+
+function clear(){
+    _gaq.push(['_trackEvent', 'fc11', 'clear']);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+
+
+$('#colors li').click(function() {
+    $('#colors li').removeClass('active');
+    $(this).addClass('active');
+});
